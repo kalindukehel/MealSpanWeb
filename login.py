@@ -2,7 +2,8 @@
 
 import requests
 from bs4 import BeautifulSoup
-
+from datetime import date,datetime
+import numpy as np
 
 def authenticate(username,password):
     basic = ''
@@ -20,9 +21,17 @@ def authenticate(username,password):
             statuscode = 0
             balpage = s.get('https://onlineservices.hospitality.uoguelph.ca/secure/onlineinquiry.cshtml')
             balsoup = BeautifulSoup(balpage.text,'html5lib')
-            basic = balsoup.find_all('td',{'align':'left'})[3].text
-            flex = balsoup.find_all('td',{'align':'left'})[5].text
+            basic = balsoup.find_all('td',{'align':'left'})[3].text[1:]
+            flex = balsoup.find_all('td',{'align':'left'})[5].text[1:]
         else:
             statuscode = 1
 
     return(basic,flex,statuscode)
+
+def calculatespending(basic,flex,enddate):
+    total = float(basic.replace(',','')) + (float(flex.replace(',','')))
+    enddatesplit = enddate.split('-')
+    d2 = date(int(enddatesplit[0]),int(enddatesplit[1]),int(enddatesplit[2]))
+    d1 = date.today()
+    diff = (d2-d1).days
+    return round(total/diff,2)
