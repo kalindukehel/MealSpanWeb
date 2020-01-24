@@ -28,10 +28,13 @@ def authenticate(username,password):
 
     return(basic,flex,statuscode)
 
-def calculatespending(basic,flex,enddate):
+def calculatespending(basic,flex,enddate,exclude):
     total = float(basic.replace(',','')) + (float(flex.replace(',','')))
     enddatesplit = enddate.split('-')
     d2 = date(int(enddatesplit[0]),int(enddatesplit[1]),int(enddatesplit[2]))
     d1 = date.today()
-    diff = (d2-d1).days
+    if (exclude == True):
+        diff = np.busday_count(d1,d2)+ 1
+    else:
+        diff = (d2-d1).days
     return round(total/diff,2)

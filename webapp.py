@@ -21,12 +21,13 @@ def form_post():
         username = request.form['username']
         password = request.form['password']
         date = request.form['date']
+        exclude = 'exclude' in request.form
         #authenticate(username,password)
         basic,flex,statuscode = login.authenticate(username,password)
         if(statuscode == 1):
             return render_template('balance.html',basic= '0',flex='0',spend=0)
         else:
-            spending = login.calculatespending(basic,flex,date)
+            spending = login.calculatespending(basic,flex,date,exclude)
             return render_template('balance.html',basic = basic, flex=flex,spend=spending)
 
 
