@@ -2,12 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balance</title>
   </head>
-  <h1>Your balance is</h1>
+  <h2>Your balance is</h2>
   <body>
-    <p>Basic: {{basic}} <br>
-      Flex: {{flex}} <br>
-    Recommended spending: ${{spend}}/day</p>
+    <div style="clear: both">
+    <p>Basic: ${{basic}} <br><br>
+      Flex: ${{flex}} <br><br>
+    Recommended spending: <b>${{spend}}/day</b></p>
+  </div>
   </body>
 </html>

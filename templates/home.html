@@ -2,18 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/style.css')}}">
     <title>Web App</title>
   </head>
   <body>
-    <h1>Kal's Web App</h1>
-    <form method="post">
+    <h1>MealSpan</h1> <h3> by Kalindu</h3><br>
+    <form action = "{{url_for('form_post')}}" method="post">
       Username:<br>
       <input type="text" name="username"><br><br>
       Password:<br>
       <input type="password" name="password"><br><br>
       Date of your last exam:<br>
       <input type="date" name="date" value ="2020-04-21"><br><br>
-      <input type="submit">
+      <input type="checkbox" name="exclude">Exclude weekends<br><br>
+      <input type="submit" value='Calculate'>
     </form>
   </body>
 </html>
