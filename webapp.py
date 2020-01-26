@@ -5,8 +5,6 @@ import login
 
 app = Flask(__name__)
 
-#def authenticate(username,password):
-
 
 @app.route("/")
 def home():
@@ -16,7 +14,7 @@ def home():
 def form_post():
     if(request.method == 'GET'):
         back = url_for('home')
-        return ("<a href="+ back+'>'+"a</a>")
+        return ("<a href="+ back+'>'+"Click here to log-in again.</a>")
     elif(request.method == 'POST'):
         username = request.form['username']
         password = request.form['password']
@@ -25,7 +23,7 @@ def form_post():
         #authenticate(username,password)
         basic,flex,statuscode = login.authenticate(username,password)
         if(statuscode == 1):
-            return render_template('balance.html',basic= '0',flex='0',spend=0)
+            return ("Invalid username/password <a href="+ url_for('home')+'>'+"click here</a> to try again.")
         else:
             spending = login.calculatespending(basic,flex,date,exclude)
             return render_template('balance.html',basic = basic, flex=flex,spend=spending)
