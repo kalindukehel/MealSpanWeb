@@ -5,6 +5,6 @@ Web version of MealSpan application. A webapp to help University of Guelph stude
 1. $ export FLASK_APP=webapp.py
 2. $ flask run
 
-Website can be found at https://meal-span.herokuapp.com
+Website can be found at https://mealspan.herokuapp.com
 
 ![preview](./preview.gif)
