@@ -21,8 +21,14 @@ def authenticate(username,password):
             statuscode = 0
             balpage = s.get('https://onlineservices.hospitality.uoguelph.ca/secure/onlineinquiry.cshtml')
             balsoup = BeautifulSoup(balpage.text,'html.parser')
-            basic = balsoup.find_all('td',{'align':'left'})[3].text[1:]
-            flex = balsoup.find_all('td',{'align':'left'})[5].text[1:]
+            try:
+                basic = balsoup.find_all('td',{'align':'left'})[3].text[1:]
+            except IndexError:
+                basic = '0'
+            try:
+                flex = balsoup.find_all('td',{'align':'left'})[5].text[1:]
+            except IndexError:
+                flex = '0'
         else:
             statuscode = 1
 
