@@ -1,0 +1,26 @@
+
+.container{
+  width: 50%;
+  margin-left: -15px;
+}
+.progress{
+  height: 50px;
+}
+
+.greeting{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(41, 199, 136);
+  color: white;
+}
+
+.plan-container{
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.spending-container{
+  margin-top: 5%;
+  margin-left: 5%;
+}

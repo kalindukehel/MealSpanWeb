@@ -1,0 +1,25 @@
+html,body{
+  height: 100%;
+  background-size: cover;
+  background-color: rgb(32, 212, 115) !important;
+}
+.container{
+  height: 100%;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+box-shadow: 7px 7px 25px	rgb(32,32,32);
+
+}
+
+.iconcontainer{
+  text-align: center;
+  margin-top: -100px;
+}

@@ -21,12 +21,12 @@ def form_post():
         date = request.form['date']
         exclude = 'exclude' in request.form
         #authenticate(username,password)
-        basic,flex,statuscode = login.authenticate(username,password)
+        basic,flex,statuscode,mp = login.authenticate(username,password)
         if(statuscode == 1):
             return ("Invalid username/password <a href="+ url_for('home')+'>'+"click here</a> to try again.")
         else:
             spending = login.calculatespending(basic,flex,date,exclude)
-            return render_template('balance.html',basic = basic, flex=flex,spend=spending)
+            return render_template('balance.html',basic = basic, flex=flex,spend=spending, plan = mp[0],total=(mp[1] + mp[2]),username=username, basicwidth = (float((basic))/(int(mp[1])+int(mp[2])))*100, flexwidth = (float((flex))/(int(mp[1])+int(mp[2])))*100)
 
 
 if __name__ == '__main__':  #if run with python $ python webapp.py     then it runs with debug mode on
