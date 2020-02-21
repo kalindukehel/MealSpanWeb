@@ -1,7 +1,8 @@
 
 .container{
-  width: 50%;
-  margin-left: -15px;
+  width:90%;
+  margin: 0;
+  padding:0;
 }
 .progress{
   height: 50px;
@@ -16,11 +17,26 @@
 }
 
 .plan-container{
-  margin-left: 5%;
-  margin-top: 2%;
+  padding-left:1%;
+  padding-top:2%;
+  float:left;
+  width: 50%;
 }
 
 .spending-container{
-  margin-top: 5%;
-  margin-left: 5%;
+  padding-top: 2%;
+  float: left;
+}
+
+.clr{
+  clear:left;
+}
+@media screen and (max-width: 532px){
+  .spending-container{
+    padding-top: 5%;
+    padding-left: 1%;
+  }
+  .plan-container{
+    width:100%;
+  }
 }
