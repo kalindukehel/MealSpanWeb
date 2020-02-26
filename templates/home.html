@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - MealSpan</title>
 </head>
-<body>
+<body onload="generateDate()">
   <div class = "container">
     <div class="d-flex justify-content-center h-100">
       <div class="card" style="max-width: 18rem;">
@@ -15,12 +15,12 @@
           <h3><strong>Login</strong></h3><br>
           <form class="loginform" action="{{url_for('form_post')}}" method="post">
             <div class="input-group form-group">
-  						<input type="text" name = "username" class="form-control" placeholder="Username">
-  					</div>
-  					<div class="input-group form-group">
-  						<input type="password" name = "password" class="form-control" placeholder="Password">
-  					</div>
-            <input type="date" name="date" value ="2020-04-21" alt="Date of last exam"><br><br>
+              <input type="text" name = "username" class="form-control" placeholder="Username">
+            </div>
+            <div class="input-group form-group">
+              <input type="password" name = "password" class="form-control" placeholder="Password">
+            </div>
+            <input type="date" name="date" id = "date" value ="2020-04-21" alt="Date of last exam"><br><br>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name = "exclude" value="" id="defaultCheck1">
               <label class="form-check-label" for="defaultCheck1">
@@ -31,16 +31,16 @@
 
 
           </form>
-      </div>
+        </div>
 
+      </div>
     </div>
   </div>
-</div>
-<div class="iconcontainer">
-  <a href="https://github.com/kalindukehel/MealSpanWeb">
-  <img class = "githublink" src="{{url_for('static',filename='github.png')}}" alt="" style="height:70px; width:70px;" >
-</a>
-</div>
-
+  <div class="iconcontainer">
+    <a href="https://github.com/kalindukehel/MealSpanWeb">
+      <img class = "githublink" src="{{url_for('static',filename='github.png')}}" alt="" style="height:70px; width:70px;" >
+    </a>
+  </div>
+  <script src="{{url_for('static',filename='javascript.js')}}"></script>
 </body>
 </html>
