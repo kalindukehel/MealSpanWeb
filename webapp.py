@@ -12,17 +12,17 @@ def home():
 
 @app.route("/balance",methods=['GET','POST'])
 def form_post():
-    if(request.method == 'GET'):
+    if(request.method == 'GET'): #reprompt user if bal page accessed without form data
         back = url_for('home')
         return ("<a href="+ back+'>'+"Click here to log-in again.</a>")
     elif(request.method == 'POST'):
+        #sending form data to generate balance page
         username = request.form['username']
         password = request.form['password']
         date = request.form['date']
         exclude = 'exclude' in request.form
-        #authenticate(username,password)
-        basic,flex,statuscode,mp = login.authenticate(username,password)
-        if(statuscode == 1):
+        basic,flex,statusCode,mp = login.authenticate(username,password)
+        if(statusCode == 1):
             return ("Invalid username/password <a href="+ url_for('home')+'>'+"click here</a> to try again.")
         else:
             spending = login.calculatespending(basic,flex,date,exclude)
