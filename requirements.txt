@@ -10,7 +10,7 @@ idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10.3
 MarkupSafe==1.1.1
-numpy==1.18.1
+numpy==1.22.0
 pytz==2019.3
 requests==2.22.0
 soupsieve==1.9.5
