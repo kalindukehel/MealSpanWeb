@@ -16,7 +16,7 @@ def authenticate(username,password):
         request_id = soup.find('input',{'name':'request_id'})['value']
         OAM_REQ = soup.find('input',{'name':'OAM_REQ'})['value']
         payload = {'username':username,'password':password,'request_id':request_id,'OAM_REQ':OAM_REQ}
-        logPage = s.post('https://sso2.identity.uoguelph.ca/oam/server/auth_cred_submit',data=payload)
+        logPage = s.post('https://sso.identity.uoguelph.ca/oam/server/auth_cred_submit',data=payload)
         statuscode = 1
         mp = ['',0,0]
         mpTypes = [('Minimum',728,665),('Light',840,805),('Full',915,910),('Plus',1025,980),('Varsity',1099,1015),('Over',0,0)]

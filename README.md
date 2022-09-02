@@ -6,5 +6,4 @@ Web version of MealSpan application. A webapp to help University of Guelph stude
 
     $ flask run
 
-
 ![preview](./preview.gif)
