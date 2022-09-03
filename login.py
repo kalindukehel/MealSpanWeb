@@ -45,6 +45,7 @@ def authenticate(username,password):
                     mp[0] = 'Carry Over'
             except IndexError:
                 mp[0] = ''
+            s.get('https://onlineservices.hospitality.uoguelph.ca/logout.cshtml')
         else:
             statuscode = 1
 
