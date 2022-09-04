@@ -41,15 +41,15 @@ def authenticate(username,password):
             #checking if the plan is carry over
             try:
                 mp[0] = balSoup.find_all('a',href=re.compile("./detailview"))[0].text.split(" ")[1]
+                mealplan_name = balSoup.find_all('a',href=re.compile("./detailview"))[0].text
+                residence_meal_plan = False
                 for i in range(5):
                     if(mpTypes[i][0] == mp[0]):
                         mp[1],mp[2] = mpTypes[i][1],mpTypes[i][2]
-                if(mp[0]=='Over'):
+                        residence_meal_plan = True
+                if(not residence_meal_plan):
                     mp[1],mp[2] = float(basic.replace(',','')),float(flex.replace(',',''))
-                    mp[0] = 'Carry Over'
-                elif(mp[0]=='Meal'):
-                    mp[1],mp[2] = float(basic.replace(',','')),float(flex.replace(',',''))
-                    mp[0] = 'Ultra Meal Plan'
+                    mp[0] = mealplan_name
             except IndexError:
                 mp[0] = ''
             s.get('https://onlineservices.hospitality.uoguelph.ca/logout.cshtml')
