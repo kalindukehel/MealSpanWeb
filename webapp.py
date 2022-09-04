@@ -27,7 +27,13 @@ def form_post():
             return ("Invalid username/password <a href="+ url_for('home')+'>'+"click here</a> to try again.")
         else:
             spending = login.calculatespending(basic,flex,date,exclude)
-            return render_template('balance.html',basic = basic, flex=flex,spend=spending, plan = mp[0],total=(mp[1] + mp[2]),username=username, basicwidth = 0 if basic == '0' else (float((basic.replace(',','')))/(int(math.ceil(float(mp[1])))+int(mp[2])))*100, flexwidth = 0 if flex == '0' else (float((flex.replace(',','')))/(int(mp[1])+int(math.ceil(float(mp[2])))))*100)
+            basic_width = 0
+            if (basic != '0'):
+                basic_width = float((basic.replace(',','')))/(int(math.ceil(float(mp[1])))+int(mp[2]))*100
+            flex_width = 0
+            if (flex != '0'):
+                flex_width = float((flex.replace(',','')))/(int(mp[1])+int(math.ceil(float(mp[2]))))*100
+            return render_template('balance.html',basic = basic, flex=flex,spend=spending, plan = mp[0],total=(mp[1] + mp[2]),username=username, basicwidth = basic_width, flexwidth = flex_width)
 
 
 if __name__ == '__main__':  #if run with python $ python webapp.py     then it runs with debug mode on

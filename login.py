@@ -20,7 +20,11 @@ def authenticate(username,password):
         statuscode = 1
         mp = ['',0,0]
         mpTypes = [('Minimum',728,665),('Light',840,805),('Full',915,910),('Plus',1025,980),('Varsity',1099,1015),('Over',0,0)]
-        if(logPage.url == 'https://onlineservices.hospitality.uoguelph.ca/student/studenthome.cshtml'):
+        #if prompted to choose between student and staff
+        if(logPage.url == 'https://onlineservices.hospitality.uoguelph.ca/secure/choosestatus.cshtml?url=/secure/forceuserlogin.cshtml?'):
+            studentPayload = {'status': 'student','login_submit': 'Sign In'}
+            logPage = s.post('https://onlineservices.hospitality.uoguelph.ca/secure/forceuserlogin.cshtml?url=/secure/forceuserlogin.cshtml?',data=studentPayload)
+        if('onlineservices.hospitality.uoguelph.ca/student/studenthome' in logPage.url):
             statuscode = 0
             balPage = s.get('https://onlineservices.hospitality.uoguelph.ca/secure/onlineinquiry.cshtml')
             balSoup = BeautifulSoup(balPage.text,'html.parser')
@@ -43,6 +47,9 @@ def authenticate(username,password):
                 if(mp[0]=='Over'):
                     mp[1],mp[2] = float(basic.replace(',','')),float(flex.replace(',',''))
                     mp[0] = 'Carry Over'
+                elif(mp[0]=='Meal'):
+                    mp[1],mp[2] = float(basic.replace(',','')),float(flex.replace(',',''))
+                    mp[0] = 'Ultra Meal Plan'
             except IndexError:
                 mp[0] = ''
             s.get('https://onlineservices.hospitality.uoguelph.ca/logout.cshtml')
