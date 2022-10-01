@@ -28,10 +28,10 @@ def form_post():
         else:
             spending = login.calculatespending(basic,flex,date,exclude)
             basic_width = 0
-            if (basic != '0'):
+            if (float(basic) != 0):
                 basic_width = float((basic.replace(',','')))/(int(math.ceil(float(mp[1])))+int(mp[2]))*100
             flex_width = 0
-            if (flex != '0'):
+            if (float(flex) != 0):
                 flex_width = float((flex.replace(',','')))/(int(mp[1])+int(math.ceil(float(mp[2]))))*100
             return render_template('balance.html',basic = basic, flex=flex,spend=spending, plan = mp[0],total=(mp[1] + mp[2]),username=username, basicwidth = basic_width, flexwidth = flex_width)
 
