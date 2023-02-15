@@ -15,5 +15,5 @@ pytz==2019.3
 requests==2.22.0
 soupsieve==1.9.5
 urllib3==1.25.8
-Werkzeug==0.16.0
+Werkzeug==2.2.3
 zope.interface==4.7.1
